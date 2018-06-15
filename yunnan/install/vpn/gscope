@@ -1,0 +1,10 @@
+# written by pptpsetup
+pty "pptp 115.29.175.49 --nolaunchpppd"
+lock
+noauth
+nobsdcomp
+nodeflate
+name qicai
+remotename gscope
+ipparam gscope
+unit 4

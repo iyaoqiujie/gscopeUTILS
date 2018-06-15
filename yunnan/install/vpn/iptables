@@ -1,0 +1,12 @@
+iptables -A FORWARD_DOWNSTREAM_LIST -i ppp4 -j ACCEPT
+iptables -t nat -I PREROUTING -p tcp -m tcp --dport 9090 -j DNAT --to-destination 192.168.1.108:80
+iptables -t nat -I POSTROUTING -d 192.168.1.108 -p tcp -m tcp --dport 80 -j SNAT --to-source 192.168.1.1
+
+iptables -t nat -I PREROUTING -p tcp -m tcp --dport 37777 -j DNAT --to-destination 192.168.1.108:37777
+iptables -t nat -I POSTROUTING -d 192.168.1.108 -p tcp -m tcp --dport 37777 -j SNAT --to-source 192.168.1.1
+
+iptables -t nat -I PREROUTING -p udp -m udp --dport 37778 -j DNAT --to-destination 192.168.1.108:37778
+iptables -t nat -I POSTROUTING -d 192.168.1.108 -p udp -m udp --dport 37778 -j SNAT --to-source 192.168.1.1
+
+iptables -t nat -I PREROUTING -p tcp -m tcp --dport 554 -j DNAT --to-destination 192.168.1.108:554
+iptables -t nat -I POSTROUTING -d 192.168.1.108 -p tcp -m tcp --dport 554 -j SNAT --to-source 192.168.1.1

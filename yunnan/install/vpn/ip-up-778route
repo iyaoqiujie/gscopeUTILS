@@ -1,0 +1,11 @@
+#!/bin/sh
+
+IF1=$1
+LOCAL=$4
+PEER=$5
+
+if [ "$IF1" != "ppp4" ]; then
+        exit 0
+fi
+
+route add -net 10.78.0.0/16 gw 10.78.0.1 dev ppp4
